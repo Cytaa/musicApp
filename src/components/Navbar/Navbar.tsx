@@ -1,6 +1,6 @@
 import "./Navbar.scss";
 const Navbar = () => {
-  return <div className="navbar">Siema tutaj navbar tako</div>;
+  return <div className="navbar"></div>;
 };
 
 export default Navbar;

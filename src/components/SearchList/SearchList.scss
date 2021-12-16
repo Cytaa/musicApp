@@ -1,9 +1,27 @@
 @import "../../variables";
 .searchList {
   display: flex;
-  justify-content: center;
+  padding: 1rem;
+  justify-content: left;
   background-color: $secondary-color;
   width: 40vw;
   height: 50vh;
   border-radius: $default-radius;
+}
+
+.searchList__form {
+  width: 100%;
+}
+
+.searchList__input {
+  height: 1rem;
+  width: 100%;
+  background-color: $secondary-color;
+  border: none;
+  border-bottom: $font-color 1px solid;
+  color: $font-color;
+}
+.searchList__input:focus {
+  box-shadow: none;
+  outline: none;
 }

@@ -1,9 +1,11 @@
 @import "../../variables";
 .playlist {
+  padding: 1rem;
   display: flex;
   justify-content: center;
   background-color: $secondary-color;
   width: 20vw;
   height: 50vh;
   border-radius: $default-radius;
+  color: $font-color;
 }
