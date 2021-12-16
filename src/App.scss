@@ -1,0 +1,16 @@
+@import "variables";
+html,
+body {
+  margin: 0;
+  background-color: $primary-color;
+  height: 100vh;
+  width: 100vw;
+}
+
+.mainComponent {
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  color: aliceblue;
+}
