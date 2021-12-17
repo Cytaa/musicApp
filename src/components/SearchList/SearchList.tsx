@@ -1,20 +1,47 @@
 import { FormEvent, useState } from "react";
-import sendRequest from "../../api/getData";
+import getMusic from "../../api/getMusic";
+import Music from "../../models/Music";
+import List from "../List/List";
 import "./SearchList.scss";
+
+// const useRequest = (queryURL: string) => {
+//   const [query, setQuery] = useState<string>("");
+//   const [loading, setLoading] = useState<boolean>(false);
+
+//   const initRequest = async (): Promise<Array<Music>> => {
+//     setLoading(true);
+//     const resp = await getMusic(query);
+//     setQuery("");
+//     setLoading(false);
+//     return resp;
+//   };
+
+//   return [query, setQuery, initRequest, loading] as const;
+// };
 
 const SearchList = () => {
   const [query, setQuery] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [songs, setSongs] = useState<Array<Music> | undefined>();
 
-  const handleSubmit = (e: FormEvent): void => {
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
+    setLoading(true);
     e.preventDefault();
     console.log(query);
-    sendRequest(query);
+    const response: Array<Music> = await getMusic(query);
+    console.log(response);
+    setSongs(response);
     setQuery("");
+    setLoading(false);
+    console.log();
   };
 
   return (
     <div className="searchList">
-      <form className="searchList__form" onSubmit={(e) => handleSubmit(e)}>
+      <form
+        className="searchList__form"
+        onSubmit={async (e) => await handleSubmit(e)}
+      >
         <input
           className="searchList__input"
           type="text"
@@ -23,6 +50,7 @@ const SearchList = () => {
           placeholder="Search"
         />
       </form>
+      <List className="serchList__list" songs={songs} />
     </div>
   );
 };

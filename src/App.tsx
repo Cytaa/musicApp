@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar/Navbar";
 import Playlist from "./components/Playlist/Playlist";
 import SearchList from "./components/SearchList/SearchList";
 import "./App.scss";
-
 function App() {
   return (
     <div>

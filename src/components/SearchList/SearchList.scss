@@ -1,11 +1,12 @@
 @import "../../variables";
 .searchList {
   display: flex;
+  flex-direction: column;
   padding: 1rem;
   justify-content: left;
   background-color: $secondary-color;
   width: 40vw;
-  height: 50vh;
+  height: auto;
   border-radius: $default-radius;
 }
 
@@ -24,4 +25,20 @@
 .searchList__input:focus {
   box-shadow: none;
   outline: none;
+}
+
+.searchList__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchList__listItem {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-bottom: 1px solid black;
+}
+
+button {
+  width: 5vw;
 }
