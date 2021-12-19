@@ -6,7 +6,7 @@ import { useState } from "react";
 interface ListProps {
   songs?: Array<Music>;
   className: string;
-  handleAddMusic?: (music: Music) => void;
+  handleAddMusic: (music: Music) => void;
 }
 
 const List = ({ songs, handleAddMusic }: ListProps) => {
@@ -17,15 +17,16 @@ const List = ({ songs, handleAddMusic }: ListProps) => {
         {songs ? (
           songs.slice(0, 5 * number).map((song) => (
             <li key={song.id} className="searchList__listItem">
-              <div>
+              <img
+                className="image"
+                src={song.album.cover_small}
+                alt="album cover"
+              />
+              <div className="searchList__listItem__text">
                 <p>{song.title}</p>
                 <p>{song.artist.name}</p>
-                {handleAddMusic ? (
-                  <button onClick={() => handleAddMusic(song)}>add</button>
-                ) : (
-                  <></>
-                )}
               </div>
+              <button onClick={() => handleAddMusic(song)}>add</button>
             </li>
           ))
         ) : (

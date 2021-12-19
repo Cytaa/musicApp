@@ -5,7 +5,13 @@
   justify-content: center;
   background-color: $secondary-color;
   width: 20vw;
-  height: 50vh;
+  min-height: 50vh;
+  height: fit-content;
   border-radius: $default-radius;
   color: $font-color;
+}
+
+.image {
+  border-radius: $image-radius;
+  height: fit-content;
 }

@@ -12,8 +12,15 @@ const Playlist = ({ playlist }: PlayListProps) => {
         {playlist.length > 0 ? (
           playlist.map((song) => (
             <li className="searchList__listItem" key={song.id}>
-              <p>{song.title}</p>
-              <p>{song.artist.name}</p>
+              <img
+                className="image"
+                src={song.album.cover_small}
+                alt="album cover"
+              />
+              <div>
+                <p>{song.title}</p>
+                <p>{song.artist.name}</p>
+              </div>
             </li>
           ))
         ) : (
