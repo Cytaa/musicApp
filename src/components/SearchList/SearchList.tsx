@@ -10,18 +10,13 @@ interface SearchListProps {
 
 const SearchList = ({ handleAddMusic }: SearchListProps) => {
   const [query, setQuery] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
   const [songs, setSongs] = useState<Array<Music> | undefined>();
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
 
-    setLoading(true);
-
     const response: Array<Music> = await getMusic(query);
     setSongs(response);
-
-    setLoading(false);
 
     setQuery("");
   };

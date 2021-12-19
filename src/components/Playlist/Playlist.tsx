@@ -1,3 +1,4 @@
+import { json } from "stream/consumers";
 import Music from "../../models/Music";
 import "./Playlist.scss";
 
@@ -6,18 +7,22 @@ interface PlayListProps {
 }
 
 const Playlist = ({ playlist }: PlayListProps) => {
+  const handleSavePlaylist = (playlist: Array<Music>): void => {
+    localStorage.setItem("playlist", JSON.stringify(playlist));
+  };
   return (
     <div className="playlist">
-      <ul className="searchList">
+      <div>Your playlist</div>
+      <ul>
         {playlist.length > 0 ? (
           playlist.map((song) => (
-            <li className="searchList__listItem" key={song.id}>
+            <li className="playlist__listItem" key={song.id}>
               <img
                 className="image"
                 src={song.album.cover_small}
                 alt="album cover"
               />
-              <div>
+              <div className="playlist__songText">
                 <p>{song.title}</p>
                 <p>{song.artist.name}</p>
               </div>
@@ -27,6 +32,12 @@ const Playlist = ({ playlist }: PlayListProps) => {
           <></>
         )}
       </ul>
+      <button onClick={() => handleSavePlaylist(playlist)}>
+        <img
+          src="https://www.svgrepo.com/show/76243/save-icon.svg"
+          alt="save icone"
+        />
+      </button>
     </div>
   );
 };
