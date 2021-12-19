@@ -1,5 +1,4 @@
 import Music from "../../models/Music";
-import List from "../List/List";
 import "./Playlist.scss";
 
 interface PlayListProps {
@@ -9,7 +8,18 @@ interface PlayListProps {
 const Playlist = ({ playlist }: PlayListProps) => {
   return (
     <div className="playlist">
-      <List songs={playlist} className="searchList" />
+      <ul className="searchList">
+        {playlist.length > 0 ? (
+          playlist.map((song) => (
+            <li className="searchList__listItem" key={song.id}>
+              <p>{song.title}</p>
+              <p>{song.artist.name}</p>
+            </li>
+          ))
+        ) : (
+          <></>
+        )}
+      </ul>
     </div>
   );
 };
