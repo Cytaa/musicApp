@@ -4,36 +4,26 @@ import Music from "../../models/Music";
 import List from "../List/List";
 import "./SearchList.scss";
 
-// const useRequest = (queryURL: string) => {
-//   const [query, setQuery] = useState<string>("");
-//   const [loading, setLoading] = useState<boolean>(false);
+interface SearchListProps {
+  handleAddMusic: (music: Music) => void;
+}
 
-//   const initRequest = async (): Promise<Array<Music>> => {
-//     setLoading(true);
-//     const resp = await getMusic(query);
-//     setQuery("");
-//     setLoading(false);
-//     return resp;
-//   };
-
-//   return [query, setQuery, initRequest, loading] as const;
-// };
-
-const SearchList = () => {
+const SearchList = ({ handleAddMusic }: SearchListProps) => {
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [songs, setSongs] = useState<Array<Music> | undefined>();
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
-    setLoading(true);
     e.preventDefault();
-    console.log(query);
+
+    setLoading(true);
+
     const response: Array<Music> = await getMusic(query);
-    console.log(response);
     setSongs(response);
-    setQuery("");
+
     setLoading(false);
-    console.log();
+
+    setQuery("");
   };
 
   return (
@@ -50,7 +40,11 @@ const SearchList = () => {
           placeholder="Search"
         />
       </form>
-      <List className="serchList__list" songs={songs} />
+      <List
+        className="serchList__list"
+        songs={songs}
+        handleAddMusic={handleAddMusic}
+      />
     </div>
   );
 };

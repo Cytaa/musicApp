@@ -6,9 +6,10 @@ import { useState } from "react";
 interface ListProps {
   songs?: Array<Music>;
   className: string;
+  handleAddMusic?: (music: Music) => void;
 }
 
-const List = ({ songs }: ListProps) => {
+const List = ({ songs, handleAddMusic }: ListProps) => {
   const [number, setNumber] = useState<number>(1);
   return (
     <div>
@@ -16,7 +17,15 @@ const List = ({ songs }: ListProps) => {
         {songs ? (
           songs.slice(0, 5 * number).map((song) => (
             <li key={song.id} className="searchList__listItem">
-              <p>{song.title}</p>
+              <div>
+                <p>{song.title}</p>
+                <p>{song.artist.name}</p>
+                {handleAddMusic ? (
+                  <button onClick={() => handleAddMusic(song)}>add</button>
+                ) : (
+                  <></>
+                )}
+              </div>
             </li>
           ))
         ) : (

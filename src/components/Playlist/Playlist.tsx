@@ -1,6 +1,17 @@
+import Music from "../../models/Music";
+import List from "../List/List";
 import "./Playlist.scss";
-const Playlist = () => {
-  return <div className="playlist">Siema tutaj playlist</div>;
+
+interface PlayListProps {
+  playlist: Array<Music>;
+}
+
+const Playlist = ({ playlist }: PlayListProps) => {
+  return (
+    <div className="playlist">
+      <List songs={playlist} className="searchList" />
+    </div>
+  );
 };
 
 export default Playlist;
