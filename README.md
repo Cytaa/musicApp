@@ -3,7 +3,7 @@
 - install npm(bundled with node.js https://nodejs.org/en/)
 - install yarn via npm : `npm install --global yarn `
 
-# How u can run it?
+# How you can run it?
 
 - clone it into your desired destination `git clone https://github.com/Cytaa/musicApp.git`
 - navigate to musicApp/src/api folder
