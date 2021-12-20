@@ -8,6 +8,7 @@ function App() {
   const [playlist, setPlaylist] = useState<Array<Music>>([]);
 
   const handleAddMusic = (music: Music): void => {
+    if (playlist.length === 5) return;
     let newList = [...playlist];
     newList.push(music);
     setPlaylist(newList);

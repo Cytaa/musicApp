@@ -43,7 +43,7 @@ const List = ({ songs, handleAddMusic }: ListProps) => {
         onClick={() => setNumber(number + 1)}
       >
         <img
-          src="https://cdn-icons.flaticon.com/png/512/2609/premium/2609201.png?token=exp=1639950230~hmac=389566ab0e6958010964c5f9b106a891"
+          src="https://cdn-icons-png.flaticon.com/512/60/60995.png"
           alt="arrow"
         />
       </button>
