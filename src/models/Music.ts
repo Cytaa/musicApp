@@ -17,6 +17,7 @@ interface Music {
   title_short: string;
   title_version: string;
   type: string;
+  ytLink?: string;
 }
 
 export default Music;

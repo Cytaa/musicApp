@@ -16,6 +16,7 @@ const SearchList = ({ handleAddMusic }: SearchListProps) => {
     e.preventDefault();
 
     const response: Array<Music> = await getMusic(query);
+
     setSongs(response);
 
     setQuery("");

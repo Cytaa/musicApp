@@ -1,14 +1,20 @@
+import { useContext } from "react";
+import { NumberContext } from "../../contexts/NumberContext";
 import Music from "../../models/Music";
 import "./Playlist.scss";
 
 interface PlayListProps {
   playlist: Array<Music>;
+  handleRemoveMusic: (music: Music) => void;
 }
 
-const Playlist = ({ playlist }: PlayListProps) => {
+const Playlist = ({ playlist, handleRemoveMusic }: PlayListProps) => {
   const handleSavePlaylist = (playlist: Array<Music>): void => {
     localStorage.setItem("playlist", JSON.stringify(playlist));
   };
+  const number: number = useContext(NumberContext);
+  console.log(number);
+
   return (
     <div className="playlist">
       <div>Your playlist</div>
@@ -21,10 +27,10 @@ const Playlist = ({ playlist }: PlayListProps) => {
                 src={song.album.cover_small}
                 alt="album cover"
               />
-              <div className="playlist__songText">
+              <button onClick={() => handleRemoveMusic(song)}>
                 <p>{song.title}</p>
                 <p>{song.artist.name}</p>
-              </div>
+              </button>
             </li>
           ))
         ) : (

@@ -18,10 +18,6 @@
   height: fit-content;
 }
 
-.playlist__songText {
-  margin-left: 1rem;
-}
-
 .playlist__listItem {
   padding: 0;
   margin: 0;
@@ -29,6 +25,11 @@
   list-style: none;
   border-bottom: 1px solid black;
   display: flex;
+  align-items: center;
+}
+
+.playlist__listItem:hover {
+  background-color: $primary-color;
 }
 
 img {
